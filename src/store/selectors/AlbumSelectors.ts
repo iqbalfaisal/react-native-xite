@@ -7,8 +7,14 @@ import {IGenre, IVideo} from '../types';
 export const videosSelector = (state: IRootState) => state.AlbumReducer.videos;
 export const genresSelector = (state: IRootState) => state.AlbumReducer.genres;
 
-const selectVideos = createSelector([videosSelector], videos => videos || []);
-const selectGenres = createSelector([genresSelector], genres => genres || []);
+export const selectVideos = createSelector(
+  [videosSelector],
+  videos => videos || [],
+);
+export const selectGenres = createSelector(
+  [genresSelector],
+  genres => genres || [],
+);
 
 export const selectVideosByGenres = (videos: IVideo[], genres: IGenre[]) =>
   _.filter(videos, ({genre_id}: {genre_id: number}) => {

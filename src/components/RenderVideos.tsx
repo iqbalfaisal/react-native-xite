@@ -10,7 +10,7 @@ type IRenderNotes = {
 export default function RenderNotes({videos}: IRenderNotes) {
   return (
     <FlatList
-      style={{width: '100%', padding: 4}}
+      style={{width: '100%'}}
       data={videos}
       renderItem={({item}) => <VideoCard video={item} />}
       keyExtractor={video => video.id.toString()}

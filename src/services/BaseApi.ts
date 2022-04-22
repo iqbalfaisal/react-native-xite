@@ -2,15 +2,7 @@ import axios from 'axios';
 import {RenderError} from '../components';
 import {store} from '../store';
 import {SET_LOADING_STATE} from '../store/types';
-import Config from './Config';
-const baseURL = Config.ROOT_URL;
-
 class BaseApi {
-  static setDefaults() {
-    const d = axios.defaults;
-    d.baseURL = baseURL;
-  }
-
   static handleStatus(callback: Function, response: any) {
     const me = this;
     const result = response.data;
@@ -32,6 +24,8 @@ class BaseApi {
   }
 
   static handleException(ex: Error) {
+    console.log(ex);
+
     store.dispatch({type: SET_LOADING_STATE, loading: false});
 
     RenderError(ex.message);

@@ -14,6 +14,8 @@ export default function AlbumReducer(
   state: AlbumState = INITIAL_STATE,
   action: AlbumActionTypes,
 ): AlbumState {
+  console.log(action);
+
   switch (action.type) {
     case SET_ALBUM:
       return {

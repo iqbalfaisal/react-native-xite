@@ -14,7 +14,7 @@ type IVideoCard = {
   video: IVideo;
 };
 
-export default function NoteCard({video}: IVideoCard) {
+function NoteCard({video}: IVideoCard) {
   const {artist, release_year, title, image_url} = video;
   return (
     <Box alignItems="center">
@@ -57,3 +57,5 @@ export default function NoteCard({video}: IVideoCard) {
     </Box>
   );
 }
+
+export default React.memo(NoteCard);

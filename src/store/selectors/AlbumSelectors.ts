@@ -2,7 +2,7 @@ import {createSelector} from 'reselect';
 import _ from 'lodash';
 
 import {IRootState} from '../reducers';
-import {IGenre, IVideo} from '../types';
+import {IVideo} from '../types';
 
 export const videosSelector = (state: IRootState) => state.AlbumReducer.videos;
 export const genresSelector = (state: IRootState) => state.AlbumReducer.genres;
@@ -16,15 +16,12 @@ export const selectGenres = createSelector(
   genres => genres || [],
 );
 
-export const selectVideosByGenres = (videos: IVideo[], genres: IGenre[]) =>
+export const selectVideosByGenres = (videos: IVideo[], genres: number[]) =>
   _.filter(videos, ({genre_id}: {genre_id: number}) => {
-    return _.find(genres, {id: genre_id});
+    return _.includes(genres, genre_id);
   });
 
-export const selectVideosByText = createSelector(
-  [selectVideos, selectVideosByGenres],
-  (state, VideosByGenres, text) =>
-    VideosByGenres.filter(({title}: {title: string}) => {
-      return title.toLowerCase().match(text);
-    }),
-);
+export const selectVideosByTitle = (videos: IVideo[], name: string) =>
+  videos.filter(({title}: {title: string}) => {
+    return title.toLowerCase().match(name);
+  });

@@ -1,7 +1,3 @@
-# React Native Xite-Test
-
-Be aware that this project aims to be a oozou test is for solely for Xite.
-
 ## Prerequisites
 
 - [Node.js > 12](https://nodejs.org) and npm (Recommended: Use [nvm](https://github.com/nvm-sh/nvm))
